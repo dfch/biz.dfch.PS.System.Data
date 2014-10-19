@@ -93,6 +93,8 @@ Runs a script containing statements from the languages (Transact-SQL and XQuery)
 
 Basically provides the same options as the Microsoft SQL Server 'Invoke-SqlCmd' Cmdlet. You can set an alias to replace the Microsoft Cmdlet with this Cmdlet.
 
+With this Cmdlet you can also login to LocalDB database instances when you specify it via a ConnectionString. See examples for details.
+
 
 
 .OUTPUTS
@@ -221,6 +223,16 @@ Login with integrated security to named SQL instance 'SERVER1\SQLEXPRESS' by usi
 
 Invoke-SqlCmd -ConnectionString 'Data Source=SERVER1\SQLEXPRESS;Initial Catalog=CumulusCfg;Integrated Security=False;User ID=sa;Password=P@ssw0rd' 'SELECT @@VERSION' -IntegratedSecurity
 
+
+
+.EXAMPLE
+
+Login with integrated security to a (LocalDB) file database via a ConnectionString.
+
+Invoke-SqlCmd -ConnectionString 'Data Source=(LocalDB)\v11.0;AttachDbFilename="C:\VS\prj1\bin\Data\ApplicationDatabase.mdf";Integrated Security=True;Connect Timeout=30' 'SELECT @@VERSION AS [Version]' -IntegratedSecurity
+Name    Value
+----    -----
+Version Microsoft SQL Server 2012 (SP1) - 11.0.3000.0 (X64) ...
 
 
 .LINK
