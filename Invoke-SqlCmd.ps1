@@ -326,9 +326,9 @@ try {
 		if($PSBoundParameters.ContainsKey('Database')) {
 			$builder.psbase.InitialCatalog = $Database;
 		} # if
-		$builder.psbase.IntegratedSecurity = $false
-		$builder.psbase.UserID = 'sa'
-		$builder.psbase.Password = 'P@ssw0rd'
+		$builder.psbase.IntegratedSecurity = $false;
+		$builder.psbase.UserID = $Username;
+		$builder.psbase.Password = $Password;
 	} else {
 		$builder = New-Object System.Data.SqlClient.SqlConnectionStringBuilder($ConnectionString);
 		$ServerInstance = $builder.psbase.DataSource;
