@@ -10,3 +10,5 @@ This Microsoft PowerShell module contains Cmdlets to perform various related act
 You can also download this module via [NuGet](http://nuget.org) with [Install-Package biz.dfch.PS.System.Data](https://www.nuget.org/packages/biz.dfch.PS.System.Data/)
 
 See http://d-fens.ch/2014/10/19/module-biz-dfch-ps-system-data/
+
+See https://github.com/dfch/biz.dfch.PS.System.Data/wiki for a detailed description on how to use the Cmdlets in this module.
