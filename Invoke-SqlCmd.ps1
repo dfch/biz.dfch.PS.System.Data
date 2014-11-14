@@ -237,7 +237,7 @@ Version Microsoft SQL Server 2012 (SP1) - 11.0.3000.0 (X64) ...
 
 .LINK
 
-Online Version: http://dfch.biz/PS/System/Data/Invoke-SqlCmd/
+Online Version: http://dfch.biz/biz/dfch/PSSystem/Data/Invoke-SqlCmd/
 
 
 .NOTES
@@ -258,7 +258,7 @@ Requires module 'biz.dfch.PS.System.Utilities'.
 	,
 	DefaultParameterSetName = "name-integrated"
 	,
-	HelpURI = 'http://dfch.biz/PS/System/Data/Invoke-SqlCmd/'
+	HelpURI = 'http://dfch.biz/biz/dfch/PSSystem/Data/Invoke-SqlCmd/'
     )]
 Param(
 	[Parameter(Mandatory = $true, ParameterSetName = 'name-plain')]
