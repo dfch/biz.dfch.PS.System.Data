@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>biz.dfch.PS.System.Data</id>
+        <version>1.1.0</version>
+        <title>biz.dfch.PS.System.Data</title>
+        <authors>d-fens GmbH</authors>
+        <owners>Ronald Rink</owners>
+        <licenseUrl>https://github.com/dfch/biz.dfch.PS.System.Data/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/dfch/biz.dfch.PS.System.Data</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/dfch/biz.dfch.PS.System.Data/master/logo-32x32.png</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>biz.dfch.PS.System.Data
+Modules: biz.dfch.PS.System.Data
+
+d-fens GmbH, General-Guisan-Strasse 6, CH-6300 Zug, Switzerland
+
+This PowerShell module contains Cmdlets to perform various related actions against (SQL) databases via the .NET Framework System.Data namespace. It does not use the the SQL Server shipped "Invoke-SqlCmd" Cmdlet from the "SqlServerCmdletSnapin100" assembly (which is quite buggy).
+
+See http://d-fens.ch/2014/10/19/module-biz-dfch-ps-system-data/</description>
+        <summary>This PowerShell module contains Cmdlets to perform various related actions against (SQL) databases via the .NET Framework System.Data namespace.</summary>
+        <releaseNotes>20150711
+
+* repackaged NuGet
+* added installer</releaseNotes>
+        <copyright>(c) 2014-2015 Ronald Rink, d-fens GmbH</copyright>
+        <language>en-US</language>
+        <tags>PowerShell dfch Invoke-SqlCmd</tags>
+    </metadata>
+    <files>
+        <file src="LICENSE" target="content\LICENSE" />
+        <file src="NOTICE" target="content\NOTICE" />
+        <file src="README.md" target="content\README.md" />
+        <file src="biz.dfch.PS.System.Data.psd1" target="tools\biz.dfch.PS.System.Data.psd1" />
+        <file src="biz.dfch.PS.System.Data.psm1" target="tools\biz.dfch.PS.System.Data.psm1" />
+        <file src="biz.dfch.PS.System.Data.xml" target="tools\biz.dfch.PS.System.Data.xml" />
+        <file src="Import-Module.ps1" target="tools\Import-Module.ps1" />
+        <file src="Invoke-SqlCmd.ps1" target="tools\Invoke-SqlCmd.ps1" />
+        <file src="LICENSE" target="tools\LICENSE" />
+        <file src="NOTICE" target="tools\NOTICE" />
+        <file src="README.md" target="tools\README.md" />
+        <file src="install.ps1" target="install.ps1" />
+    </files>
+</package>
