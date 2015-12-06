@@ -1,6 +1,10 @@
 biz.dfch.PS.System.Data
 =======================
 
+[![License](https://img.shields.io/badge/license-Apache%20License%202.0-blue.svg)](https://github.com/dfch/biz.dfch.PS.System.Data/blob/master/LICENSE)
+![NuGet downloads](https://img.shields.io/nuget/dt/biz.dfch.PS.System.Data.svg)
+![Version](https://img.shields.io/nuget/v/biz.dfch.PS.System.Data.svg)
+
 Modules: biz.dfch.PS.System.Data
 
 d-fens GmbH, General-Guisan-Strasse 6, CH-6300 Zug, Switzerland
