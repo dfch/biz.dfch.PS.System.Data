@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>biz.dfch.PS.System.Data</id>
-        <version>1.1.1</version>
+        <version>1.1.2</version>
         <title>biz.dfch.PS.System.Data</title>
         <authors>d-fens GmbH</authors>
         <owners>Ronald Rink</owners>
@@ -19,8 +19,9 @@ This PowerShell module contains Cmdlets to perform various related actions again
 
 See http://d-fens.ch/2014/10/19/module-biz-dfch-ps-system-data/</description>
         <summary>This PowerShell module contains Cmdlets to perform various related actions against (SQL) databases via the .NET Framework System.Data namespace.</summary>
-        <releaseNotes>20151029
-
+        <releaseNotes>20151209
+* fixed issue with parameter type ConnectionString and integrated security set to false
+* added Invoke-SqlCmdText as separate Cmdlet
 * fixed installer</releaseNotes>
         <copyright>(c) 2014-2015 Ronald Rink, d-fens GmbH</copyright>
         <language>en-US</language>
