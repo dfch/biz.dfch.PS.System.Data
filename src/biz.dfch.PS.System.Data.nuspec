@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
         <id>biz.dfch.PS.System.Data</id>
-        <version>1.1.2</version>
+        <version>2.0.0</version>
         <title>biz.dfch.PS.System.Data</title>
         <authors>d-fens GmbH</authors>
         <owners>Ronald Rink</owners>
@@ -17,15 +17,25 @@ d-fens GmbH, General-Guisan-Strasse 6, CH-6300 Zug, Switzerland
 
 This PowerShell module contains Cmdlets to perform various related actions against (SQL) databases via the .NET Framework System.Data namespace. It does not use the the SQL Server shipped "Invoke-SqlCmd" Cmdlet from the "SqlServerCmdletSnapin100" assembly (which is quite buggy).
 
-See http://d-fens.ch/2014/10/19/module-biz-dfch-ps-system-data/</description>
+You can also download this module via [NuGet](http://nuget.org) with [Install-Package biz.dfch.PS.System.Data](https://www.nuget.org/packages/biz.dfch.PS.System.Data/)
+
+See http://d-fens.ch/2014/10/19/module-biz-dfch-ps-system-data/
+
+See https://github.com/dfch/biz.dfch.PS.System.Data/wiki for a detailed description on how to use the Cmdlets in this module.</description>
         <summary>This PowerShell module contains Cmdlets to perform various related actions against (SQL) databases via the .NET Framework System.Data namespace.</summary>
-        <releaseNotes>20151209
-* fixed issue with parameter type ConnectionString and integrated security set to false
-* added Invoke-SqlCmdText as separate Cmdlet
-* fixed installer</releaseNotes>
-        <copyright>(c) 2014-2015 Ronald Rink, d-fens GmbH</copyright>
+        <releaseNotes>20170518
+# BREAKING CHANGES
+* renamed Invoke-SqlCmdText to Invoke-CmdText
+
+# FEATURES
+* extended  Invoke-CmdText to support ODBC and OleDb
+* added Invoke-OdbcCmd Cmdlet
+
+# BUGFIXES
+* fixed missing Exception in ErrorRecord ($_)</releaseNotes>
+        <copyright>(c) 2014-2017 Ronald Rink, d-fens GmbH</copyright>
         <language>en-US</language>
-        <tags>PowerShell dfch Invoke-SqlCmd</tags>
+        <tags>PowerShell dfch Invoke-SqlCmd Invoke-OdbcCmd</tags>
     </metadata>
     <files>
         <file src="Install.ps1" target="Install.ps1" />
@@ -37,5 +47,7 @@ See http://d-fens.ch/2014/10/19/module-biz-dfch-ps-system-data/</description>
         <file src="biz.dfch.PS.System.Data.xml" target="tools\biz.dfch.PS.System.Data.xml" />
         <file src="Import-Module.ps1" target="tools\Import-Module.ps1" />
         <file src="Invoke-SqlCmd.ps1" target="tools\Invoke-SqlCmd.ps1" />
+        <file src="Invoke-CmdText.ps1" target="tools\Invoke-CmdText.ps1" />
+        <file src="Invoke-OdbcCmd.ps1" target="tools\Invoke-OdbcCmd.ps1" />
     </files>
 </package>
