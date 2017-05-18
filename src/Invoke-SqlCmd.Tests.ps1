@@ -7,6 +7,7 @@ Describe -Tags "Test-Invoke-SqlCmd" "Test-Invoke-SqlCmd" {
 	Mock Export-ModuleMember { return $null; }
 	
 	. "$here\$sut"
+	. "$here\Invoke-CmdText"
 
 	Context "Invoke-SqlCmd-PositiveTests" {
 		It "SelectVersionAsDefault-ShouldReturnCorrectContent" -Test {
@@ -20,7 +21,7 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
         Copyright (c) Microsoft Corporation
         Express Edition (64-bit) on Windows NT 6.1 <X64> (Build 7601: Service Pack 1) (Hypervisor)
 "@
-			Mock Invoke-SqlCmdText -Verifiable -MockWith { 
+			Mock Invoke-CmdText -Verifiable -MockWith { 
 				$OutputParameter = @{};
 				$OutputParameter.Version = @"
 Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
@@ -29,14 +30,14 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
         Express Edition (64-bit) on Windows NT 6.1 <X64> (Build 7601: Service Pack 1) (Hypervisor)
 "@
 				return $OutputParameter;
-				}
+			}
 
 			# Act
 			$result = Invoke-SqlCmd -ServerInstance ".\SQLEXPRESS" $Query -As Default;
 
 			# Assert
 			Assert-VerifiableMocks;
-			# Assert-MockCalled Invoke-SqlCmdText -Exactly 1;
+			# Assert-MockCalled Invoke-CmdText -Exactly 1;
 
 			# Assert result
 			[String]::IsNullOrWhiteSpace($result) | Should Be $false;
@@ -52,7 +53,7 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 			# Arrange
 			$Query = 'SELECT @@VERSION As [Version]';
 
-			Mock Invoke-SqlCmdText -Verifiable -MockWith { 
+			Mock Invoke-CmdText -Verifiable -MockWith { 
 				$OutputParameter = @"
 <?xml version="1.0"?>
 <Objects>
@@ -69,14 +70,14 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 </Objects>
 "@
 				return $OutputParameter;
-				}
+			}
 
 			# Act
 			$result = Invoke-SqlCmd -ServerInstance ".\SQLEXPRESS" $Query -As Xml-Pretty;
 
 			# Assert
 			Assert-VerifiableMocks;
-			# Assert-MockCalled Invoke-SqlCmdText -Exactly 1;
+			# Assert-MockCalled Invoke-CmdText -Exactly 1;
 
 			# Assert result
 			[String]::IsNullOrWhiteSpace($result) | Should Be $false;
@@ -89,7 +90,7 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 			# Arrange
 			$Query = 'SELECT @@VERSION As [Version]';
 
-			Mock Invoke-SqlCmdText -Verifiable -MockWith { 
+			Mock Invoke-CmdText -Verifiable -MockWith { 
 				$OutputParameter = @"
 <?xml version="1.0"?><Objects><Object Type="System.Collections.ArrayList"><Property Type="System.Collections.Hashtable"><Property Name="Key" Type="System.String">Version</Property><Property Name="Value" Type="System.String">Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
         Jul  9 2014 16:04:25
@@ -98,14 +99,14 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 </Property></Property></Object></Objects>
 "@
 				return $OutputParameter;
-				}
+			}
 
 			# Act
 			$result = Invoke-SqlCmd -ServerInstance ".\SQLEXPRESS" $Query -As Xml;
 
 			# Assert
 			Assert-VerifiableMocks;
-			# Assert-MockCalled Invoke-SqlCmdText -Exactly 1;
+			# Assert-MockCalled Invoke-CmdText -Exactly 1;
 
 			# Assert result
 			[String]::IsNullOrWhiteSpace($result) | Should Be $false;
@@ -118,7 +119,7 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 			# Arrange
 			$Query = 'SELECT @@VERSION As [Version]';
 
-			Mock Invoke-SqlCmdText -Verifiable -MockWith { 
+			Mock Invoke-CmdText -Verifiable -MockWith { 
 				$OutputParameter = @"
 [
     {
@@ -127,14 +128,14 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 ]
 "@
 				return $OutputParameter;
-				}
+			}
 
 			# Act
 			$result = Invoke-SqlCmd -ServerInstance ".\SQLEXPRESS" $Query -As Json-Pretty;
 
 			# Assert
 			Assert-VerifiableMocks;
-			# Assert-MockCalled Invoke-SqlCmdText -Exactly 1;
+			# Assert-MockCalled Invoke-CmdText -Exactly 1;
 
 			# Assert result
 			[String]::IsNullOrWhiteSpace($result) | Should Be $false;
@@ -147,19 +148,19 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 			# Arrange
 			$Query = 'SELECT @@VERSION As [Version]';
 
-			Mock Invoke-SqlCmdText -Verifiable -MockWith { 
+			Mock Invoke-CmdText -Verifiable -MockWith { 
 				$OutputParameter = @"
 [{"Version":"Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64) \n\tJul  9 2014 16:04:25 \n\tCopyright (c) Microsoft Corporation\n\tExpress Edition (64-bit) on Windows NT 6.1 \u003cX64\u003e (Build 7601: Service Pack 1) (Hypervisor)\n"}]
 "@
 				return $OutputParameter;
-				}
+			}
 
 			# Act
 			$result = Invoke-SqlCmd -ServerInstance ".\SQLEXPRESS" $Query -As Json;
 
 			# Assert
 			Assert-VerifiableMocks;
-			# Assert-MockCalled Invoke-SqlCmdText -Exactly 1;
+			# Assert-MockCalled Invoke-CmdText -Exactly 1;
 
 			# Assert result
 			[String]::IsNullOrWhiteSpace($result) | Should Be $false;
@@ -172,7 +173,7 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 			# Arrange
 			$Query = 'SELECT @@VERSION As [Version]';
 
-			Mock Invoke-SqlCmdText -Verifiable -MockWith { 
+			Mock Invoke-CmdText -Verifiable -MockWith { 
 				$OutputParameter = @{};
 				$OutputParameter.Version = @"
 Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
@@ -181,14 +182,14 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
         Express Edition (64-bit) on Windows NT 6.1 <X64> (Build 7601: Service Pack 1) (Hypervisor)
 "@
 				return $OutputParameter;
-				}
+			}
 
 			# Act
 			$result = Invoke-SqlCmd -ServerInstance ".\SQLEXPRESS" $Query -As Default;
 
 			# Assert
 			Assert-VerifiableMocks;
-			# Assert-MockCalled Invoke-SqlCmdText -Exactly 1;
+			# Assert-MockCalled Invoke-CmdText -Exactly 1;
 
 			# Assert result
 			[String]::IsNullOrWhiteSpace($result) | Should Be $false;
@@ -199,7 +200,7 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
 			# Arrange
 			$Query = 'SELECT @@VERSION As [Version]';
 
-			Mock Invoke-SqlCmdText -Verifiable -MockWith { 
+			Mock Invoke-CmdText -Verifiable -MockWith { 
 				$OutputParameter = @{};
 				$OutputParameter.Version = @"
 Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
@@ -208,14 +209,14 @@ Microsoft SQL Server 2008 R2 (SP2) - 10.50.4033.0 (X64)
         Express Edition (64-bit) on Windows NT 6.1 <X64> (Build 7601: Service Pack 1) (Hypervisor)
 "@
 				return $OutputParameter;
-				}
+			}
 
 			# Act
 			$result = Invoke-SqlCmd -ServerInstance ".\SQLEXPRESS" $Query;
 
 			# Assert
 			Assert-VerifiableMocks;
-			# Assert-MockCalled Invoke-SqlCmdText -Exactly 1;
+			# Assert-MockCalled Invoke-CmdText -Exactly 1;
 
 			# Assert result
 			[String]::IsNullOrWhiteSpace($result) | Should Be $false;
